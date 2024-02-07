@@ -1,51 +1,41 @@
-import { FaHome, FaList } from "react-icons/fa";
+import { FaBlog, FaChartPie, FaHome, FaList, FaMobile } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
-("use client");
-
-import { Sidebar } from "flowbite-react";
-import {
-  HiArrowSmRight,
-  HiChartPie,
-  HiInbox,
-  HiShoppingBag,
-  HiTable,
-  HiUser,
-} from "react-icons/hi";
 
 const Dashbord = () => {
   return (
     <div className="flex max-w-7xl mx-auto">
-      {/* dashboard Side bar */}?
-      <Sidebar aria-label="Sidebar with multi-level dropdown example">
-        <Sidebar.Items>
-          <Sidebar.ItemGroup>
-            <Sidebar.Item href="#" icon={HiChartPie}>
-              Dashboard
-            </Sidebar.Item>
-            <Sidebar.Collapse icon={HiShoppingBag} label="E-commerce">
-              <Sidebar.Item href="#">Products</Sidebar.Item>
-              <Sidebar.Item href="#">Sales</Sidebar.Item>
-              <Sidebar.Item href="#">Refunds</Sidebar.Item>
-              <Sidebar.Item href="#">Shipping</Sidebar.Item>
-            </Sidebar.Collapse>
-            <Sidebar.Item href="#" icon={HiInbox}>
-              Inbox
-            </Sidebar.Item>
-            <Sidebar.Item href="#" icon={HiUser}>
-              Users
-            </Sidebar.Item>
-            <Sidebar.Item href="#" icon={HiShoppingBag}>
-              Products
-            </Sidebar.Item>
-            <Sidebar.Item href="#" icon={HiArrowSmRight}>
-              Sign In
-            </Sidebar.Item>
-            <Sidebar.Item href="#" icon={HiTable}>
-              Sign Up
-            </Sidebar.Item>
-          </Sidebar.ItemGroup>
-        </Sidebar.Items>
-      </Sidebar>
+      {/* dashboard Side bar */}
+      <div className="w-64 min-h-screen bg-gray-300">
+        <ul className="manu active  p-4">
+          <li className="bg-white rounded-lg p-4 m-4  ">
+            <NavLink to="dashboard/employee_list">
+              <FaList className="inline-block ml-2"></FaList> Employee List
+            </NavLink>
+          </li>
+          <li className="bg-white rounded-lg p-4 m-4">
+            <NavLink to="dashboard/">
+              <FaChartPie className="inline-block ml-2"></FaChartPie> Progress
+            </NavLink>
+          </li>
+          <hr className="my-3" />
+          <li className="bg-white rounded-lg p-4 m-4">
+            <NavLink to="/">
+              <FaHome className="inline-block ml-2"></FaHome> Home
+            </NavLink>
+          </li>
+          <li className="bg-white rounded-lg p-4 m-4">
+            <NavLink to="/contact">
+              <FaMobile className="inline-block ml-2"></FaMobile> Contact
+            </NavLink>
+          </li>
+          <li className="bg-white rounded-lg p-4 m-4">
+            <NavLink to="/login">
+              <FaBlog className="inline-block ml-2"></FaBlog> login
+            </NavLink>
+          </li>
+        </ul>
+      </div>
+
       {/* Deshboard Content */}
       <div className="flex-1">
         <Outlet></Outlet>

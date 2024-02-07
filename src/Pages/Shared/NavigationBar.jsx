@@ -3,8 +3,7 @@
 import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
-import "./navbar.css";
-import { toast } from "sonner";
+
 import Swal from "sweetalert2";
 
 const NavigationBar = () => {
@@ -110,7 +109,7 @@ const NavigationBar = () => {
         </Dropdown>
         <Navbar.Toggle />
       </div>
-      <Navbar.Collapse className="active">{navlinks}</Navbar.Collapse>
+      <Navbar.Collapse>{navlinks}</Navbar.Collapse>
     </Navbar>
   );
 };
