@@ -1,12 +1,12 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { toast } from "sonner";
 import { FaGoogle } from "react-icons/fa";
-import { AuthContext } from "../../Provider/AuthProvider";
+import useAuth from "../../Hooks/useAuth";
 
 const Login = () => {
-  const { singIn, googleLogin } = useContext(AuthContext);
+  const { singIn, googleLogin } = useAuth();
   const location = useLocation();
   console.log("loaction form login page", location);
   const navigate = useNavigate();
@@ -52,7 +52,6 @@ const Login = () => {
   };
   return (
     <div className="bg-[url('https://i.ibb.co/0qH0J7g/pexels-pixabay-271639.jpg')] pb-12 pt-4 rounded-b-lg mb-10 bg-cover">
-      <Navbar></Navbar>
       <div className="lg:w-1/2 md:w-3/4 mx-auto p-8 bg-gray-100 hero-overlay bg-opacity-50 border-2  rounded-lg">
         <h2 className="text-4xl text-center font-semibold">
           Login you account

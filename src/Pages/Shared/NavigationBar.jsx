@@ -1,9 +1,12 @@
 "use client";
 
 import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import "./navbar.css";
 
 const NavigationBar = () => {
+  const { user } = useAuth();
   const navlinks = (
     <>
       <NavLink to="/">
@@ -18,7 +21,7 @@ const NavigationBar = () => {
     </>
   );
   return (
-    <Navbar fluid rounded>
+    <Navbar fluid rounded className=" bg-gray-100 hero-overlay bg-opacity-50  ">
       <Navbar.Brand href="https://flowbite-react.com">
         <img
           src="https://i.ibb.co/yhWQmrL/Employe.jpg"
@@ -30,9 +33,22 @@ const NavigationBar = () => {
         </span>
       </Navbar.Brand>
       <div className="flex md:order-2">
-        <Button className="mx-2" pill outline gradientDuoTone="purpleToBlue">
-          Login
-        </Button>
+        {user ? (
+          <Button className="mx-2" pill outline gradientDuoTone="purpleToBlue">
+            Logout
+          </Button>
+        ) : (
+          <Link to="/login">
+            <Button
+              className="mx-2"
+              pill
+              outline
+              gradientDuoTone="purpleToBlue"
+            >
+              Login
+            </Button>
+          </Link>
+        )}
         <Dropdown
           arrowIcon={false}
           inline
@@ -58,7 +74,7 @@ const NavigationBar = () => {
         </Dropdown>
         <Navbar.Toggle />
       </div>
-      <Navbar.Collapse>{navlinks}</Navbar.Collapse>
+      <Navbar.Collapse className="active">{navlinks}</Navbar.Collapse>
     </Navbar>
   );
 };

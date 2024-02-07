@@ -1,12 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Toaster, toast } from "sonner";
 import { updateProfile } from "firebase/auth";
-import { AuthContext } from "../../Provider/AuthProvider";
+
+import useAuth from "../../Hooks/useAuth";
+import NavigationBar from "../Shared/NavigationBar";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser } = useAuth();
 
   const [passError, setPassError] = useState("");
   const navigate = useNavigate();
@@ -59,7 +61,6 @@ const Register = () => {
   };
   return (
     <div className="bg-[url('https://i.ibb.co/9vXV7nV/pexels-engin-akyurt-1579253.jpg')] pb-12 pt-4 rounded-b-lg mb-10 bg-cover">
-      <Navbar></Navbar>
       <div className="lg:w-1/2 md:w-3/4 mx-auto p-8  rounded-lg bg-gray-100 hero-overlay bg-opacity-50 border-2">
         <h2 className="text-4xl text-center font-semibold">
           Register you account
