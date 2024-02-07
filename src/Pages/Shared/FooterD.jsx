@@ -20,7 +20,7 @@ const FooterD = () => {
               alt="Ems Logo"
               name="Employee Management"
             />
-            <h1 className="text-3xl font-semibold">Employee Management</h1>
+            <h1 className="text-2xl font-bold py-2">Employee Management</h1>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
             <div>
