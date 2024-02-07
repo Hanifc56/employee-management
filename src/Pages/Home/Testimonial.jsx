@@ -81,7 +81,7 @@ const Testimonial = () => {
               <figcaption className="mt-10">
                 <img
                   className="mx-auto h-10 w-10 rounded-full"
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  src="https://i.ibb.co/XszkknC/pexels-linkedin-sales-navigator-2182970.jpg"
                   alt=""
                 />
                 <div className="mt-4 flex items-center justify-center space-x-3 text-base">
@@ -95,7 +95,7 @@ const Testimonial = () => {
                   >
                     <circle cx={1} cy={1} r={1} />
                   </svg>
-                  <div className="text-gray-600">CEO of Workcation</div>
+                  <div className="text-gray-600">CTO of Workcation</div>
                 </div>
               </figcaption>
             </figure>
@@ -122,8 +122,8 @@ const Testimonial = () => {
               </blockquote>
               <figcaption className="mt-10">
                 <img
-                  className="mx-auto h-10 w-10 rounded-full"
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  className="mx-auto h-10 w-10 rounded-full bg-contain"
+                  src="https://i.ibb.co/601Xwpy/pexels-andrea-piacquadio-3756679.jpg"
                   alt=""
                 />
                 <div className="mt-4 flex items-center justify-center space-x-3 text-base">
@@ -137,7 +137,7 @@ const Testimonial = () => {
                   >
                     <circle cx={1} cy={1} r={1} />
                   </svg>
-                  <div className="text-gray-600">CEO of Workcation</div>
+                  <div className="text-gray-600">COO of Workcation</div>
                 </div>
               </figcaption>
             </figure>
