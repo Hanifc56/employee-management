@@ -4,6 +4,10 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { FaGoogle } from "react-icons/fa";
 import useAuth from "../../Hooks/useAuth";
+("use client");
+
+import { HiMail } from "react-icons/hi";
+import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 
 const Login = () => {
   const { singIn, googleLogin } = useAuth();
@@ -51,67 +55,67 @@ const Login = () => {
       });
   };
   return (
-    <div className="bg-[url('https://i.ibb.co/0qH0J7g/pexels-pixabay-271639.jpg')] pb-12 pt-4 rounded-b-lg mb-10 bg-cover">
+    <div className="bg-[url('https://i.ibb.co/TYwz4PW/pexels-burak-the-weekender-1098982.jpg')] pb-12 pt-4 rounded-b-lg mb-10 bg-cover">
       <div className="lg:w-1/2 md:w-3/4 mx-auto p-8 bg-gray-100 hero-overlay bg-opacity-50 border-2  rounded-lg">
         <h2 className="text-4xl text-center font-semibold">
           Login you account
         </h2>
         <hr className="border-black my-8" />
-        <form onSubmit={handleLogin} className="card-body">
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Email</span>
-            </label>
-            <input
+        <form onSubmit={handleLogin} className="flex max-w-lg flex-col gap-4">
+          <div className="">
+            <div className="mb-2 block">
+              <Label htmlFor="email2" value="Your email" />
+            </div>
+            <TextInput
+              id="email2"
               type="email"
-              placeholder="Enter you email"
-              name="email"
-              className="input input-bordered
-              bg-transparent"
+              rightIcon={HiMail}
+              placeholder="Enter your email"
               required
+              shadow
             />
             {mailError && (
               <span className="label-text text-red-400">{mailError}</span>
             )}
           </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Password</span>
-            </label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Enter your password"
-              className="input input-bordered
-              bg-transparent"
-              required
-            />
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="password2" value="Your password" />
+            </div>
+            <TextInput id="password2" type="password" required shadow />
             {mailError && (
               <span className="label-text text-red-400">{mailError}</span>
             )}
-            <label className="label">
-              <a href="#" className="label-text-alt link link-hover">
-                Forgot password?
-              </a>
-            </label>
           </div>
-          <div className="form-control mt-6">
-            <button className="btn btn-outline bg-transparent  ">Login</button>
+          <div className="flex items-center gap-2">
+            <Checkbox id="agree" />
+            <Label htmlFor="agree" className="flex">
+              I agree with the&nbsp;
+              <Link
+                href="#"
+                className="text-cyan-600 hover:underline dark:text-cyan-500"
+              >
+                terms and conditions
+              </Link>
+            </Label>
           </div>
+          <Button gradientDuoTone="redToYellow" type="submit">
+            Login
+          </Button>
         </form>
-        <hr className="border-black pb-5" />
+        <hr className="border-black p-5 mt-5" />
         <div className="flex justify-center pb-5">
-          <button
+          <Button
             onClick={handleLoginWithGoogle}
-            className="btn btn-outline bg-transparent w-3/4
-            text-blue-700"
+            gradientDuoTone="pinkToOrange"
           >
-            <FaGoogle></FaGoogle> Login With Google
-          </button>
+            <FaGoogle className="mr-2 h-5 w-5" />
+            Login With Google
+          </Button>
         </div>
         <p className="text-center">
           Do not Have An Account ?
-          <Link to="/register" className="text-green-400 font-bold pl-1">
+          <Link to="/register" className="text-red-600 font-bold pl-1">
             Register
           </Link>
         </p>

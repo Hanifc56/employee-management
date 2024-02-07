@@ -4,22 +4,29 @@ import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import "./navbar.css";
+import { toast } from "sonner";
 
 const NavigationBar = () => {
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
+  const userPhotoURL = user && user.photoURL ? user.photoURL : "";
+
   const navlinks = (
     <>
-      <NavLink to="/">
-        <Navbar.Link>Home</Navbar.Link>
-      </NavLink>
-      <NavLink to="/dashboard">
-        <Navbar.Link>Dashboard</Navbar.Link>
-      </NavLink>
-      <NavLink to="/contact">
-        <Navbar.Link>Contact</Navbar.Link>
-      </NavLink>
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/dashboard">Dashboard</NavLink>
+      <NavLink to="/contact">Contact</NavLink>
     </>
   );
+  const handleLogOut = () => {
+    logOut()
+      .then((result) => {
+        console.log(result);
+        toast.success("Log Out Successful!");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
   return (
     <Navbar fluid rounded className=" bg-gray-100 hero-overlay bg-opacity-50  ">
       <Navbar.Brand href="https://flowbite-react.com">
@@ -34,7 +41,13 @@ const NavigationBar = () => {
       </Navbar.Brand>
       <div className="flex md:order-2">
         {user ? (
-          <Button className="mx-2" pill outline gradientDuoTone="purpleToBlue">
+          <Button
+            onClick={handleLogOut}
+            className="mx-2"
+            pill
+            outline
+            gradientDuoTone="purpleToBlue"
+          >
             Logout
           </Button>
         ) : (
@@ -49,28 +62,46 @@ const NavigationBar = () => {
             </Button>
           </Link>
         )}
+        {/* <div className="w-10 rounded-full">
+          <img alt="User Image" src={user.photoURL} />
+        </div> */}
         <Dropdown
           arrowIcon={false}
           inline
-          label={
-            <Avatar
-              alt="User settings"
-              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-              rounded
-            />
-          }
+          label={<Avatar alt="User settings" img={userPhotoURL} rounded />}
         >
           <Dropdown.Header>
             <span className="block text-sm">User</span>
             <span className="block truncate text-sm font-medium">
-              name@flowbite.com
+              {user ? user.displayName : "User name"}
             </span>
           </Dropdown.Header>
           <Dropdown.Item>Dashboard</Dropdown.Item>
-          <Dropdown.Item>Settings</Dropdown.Item>
-          <Dropdown.Item>Earnings</Dropdown.Item>
           <Dropdown.Divider />
-          <Dropdown.Item>Sign out</Dropdown.Item>
+          <Dropdown.Item>
+            {user ? (
+              <Button
+                onClick={handleLogOut}
+                className="mx-2"
+                pill
+                outline
+                gradientDuoTone="purpleToBlue"
+              >
+                Logout
+              </Button>
+            ) : (
+              <Link to="/login">
+                <Button
+                  className="mx-2"
+                  pill
+                  outline
+                  gradientDuoTone="purpleToBlue"
+                >
+                  Login
+                </Button>
+              </Link>
+            )}
+          </Dropdown.Item>
         </Dropdown>
         <Navbar.Toggle />
       </div>

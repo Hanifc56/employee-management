@@ -5,7 +5,10 @@ import { Toaster, toast } from "sonner";
 import { updateProfile } from "firebase/auth";
 
 import useAuth from "../../Hooks/useAuth";
-import NavigationBar from "../Shared/NavigationBar";
+("use client");
+
+import { HiMail } from "react-icons/hi";
+import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 
 const Register = () => {
   const { createUser } = useAuth();
@@ -60,77 +63,90 @@ const Register = () => {
       });
   };
   return (
-    <div className="bg-[url('https://i.ibb.co/9vXV7nV/pexels-engin-akyurt-1579253.jpg')] pb-12 pt-4 rounded-b-lg mb-10 bg-cover">
+    <div className="bg-[url('https://i.ibb.co/cy28rBB/pexels-mohammad-danish-891059.jpg')] pb-12 pt-4 rounded-b-lg mb-10 bg-cover">
       <div className="lg:w-1/2 md:w-3/4 mx-auto p-8  rounded-lg bg-gray-100 hero-overlay bg-opacity-50 border-2">
         <h2 className="text-4xl text-center font-semibold">
           Register you account
         </h2>
         <hr className="bg-black my-8" />
-        <form onSubmit={handleRegister} className="card-body">
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Name</span>
-            </label>
-            <input
+        <form
+          onSubmit={handleRegister}
+          className="flex max-w-lg flex-col gap-4"
+        >
+          <div className="">
+            <div className="mb-2 block">
+              <Label htmlFor="name" value="Your Name" />
+            </div>
+            <TextInput
+              id="name"
               type="text"
               placeholder="Enter you name"
               name="name"
-              className="input input-bordered"
+              required
+              shadow
             />
           </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Photo URL</span>
-            </label>
-            <input
+          <div className="">
+            <div className="mb-2 block">
+              <Label htmlFor="photo" value="Photo URL" />
+            </div>
+            <TextInput
+              id="photo"
               type="text"
               placeholder="Enter you photo URl"
               name="photo"
-              className="input input-bordered"
               required
+              shadow
             />
           </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Email</span>
-            </label>
-            <input
-              type="email"
-              placeholder="Enter you email"
+          <div className="">
+            <div className="mb-2 block">
+              <Label htmlFor="email2" value="Your Email" />
+            </div>
+            <TextInput
+              id="email2"
               name="email"
-              className="input input-bordered
-               "
+              type="email"
+              rightIcon={HiMail}
+              placeholder="Enter your email"
               required
-            />
-          </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Password</span>
-            </label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Enter your password"
-              className="input input-bordered
-              "
-              required
+              shadow
             />
             {passError && (
               <span className="label-text text-red-400">{passError}</span>
             )}
-            <div className="flex mt-2">
-              <label className="label cursor-default ">
-                <input type="checkbox" className="checkbox my- items-center" />
-                <span className="label-text pl-2">
-                  Accept Term & Conditions
-                </span>
-              </label>
+          </div>
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="password2" value="Your Password" />
             </div>
+            <TextInput
+              id="password2"
+              name="password"
+              type="password"
+              required
+              shadow
+            />
+            {passError && (
+              <span className="label-text text-red-400">{passError}</span>
+            )}
           </div>
-          <div className="form-control mt-6">
-            <Toaster position="top-right"></Toaster>
-            <button className="btn btn-outline bg-transparent">Register</button>
+          <div className="flex items-center gap-2">
+            <Checkbox id="agree" />
+            <Label htmlFor="agree" className="flex">
+              I agree with the&nbsp;
+              <Link
+                href="#"
+                className="text-cyan-600 hover:underline dark:text-cyan-500"
+              >
+                terms and conditions
+              </Link>
+            </Label>
           </div>
+          <Toaster position="top-right"></Toaster>
+          <Button gradientDuoTone="redToYellow" type="submit">
+            Register
+          </Button>
         </form>
         <p className="text-center">
           Already Have An Account ?
