@@ -9,6 +9,7 @@ import useAuth from "../../Hooks/useAuth";
 
 import { HiMail } from "react-icons/hi";
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUser } = useAuth();
@@ -55,7 +56,13 @@ const Register = () => {
             console.error(error);
           });
 
-        toast.success("User Created Successfully") && navigate("/");
+        Swal.fire(
+          {
+            title: " succefully!",
+            text: "User created succefully!",
+            icon: "success",
+          } && navigate("/")
+        );
       })
       .catch((error) => {
         console.error(error);

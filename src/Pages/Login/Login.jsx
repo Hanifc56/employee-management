@@ -8,6 +8,7 @@ import useAuth from "../../Hooks/useAuth";
 
 import { HiMail } from "react-icons/hi";
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { singIn, googleLogin } = useAuth();
@@ -30,11 +31,11 @@ const Login = () => {
     singIn(email, password)
       .then((result) => {
         console.log(result);
-
         // navigate user after login
-        toast.success("login Successful") &&
+        Swal.fire("Login successful!") &&
           navigate(location?.state ? location.state : "/");
       })
+
       .catch((error) => {
         console.error(error);
         setMailError(error.message);
@@ -47,7 +48,7 @@ const Login = () => {
       .then((result) => {
         console.log(result);
         // navigate to the disired loaction
-        toast.success("Login Successful!") &&
+        Swal.fire("Login successful!") &&
           navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {

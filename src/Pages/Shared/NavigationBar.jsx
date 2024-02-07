@@ -5,6 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import "./navbar.css";
 import { toast } from "sonner";
+import Swal from "sweetalert2";
 
 const NavigationBar = () => {
   const { user, logOut } = useAuth();
@@ -21,7 +22,11 @@ const NavigationBar = () => {
     logOut()
       .then((result) => {
         console.log(result);
-        toast.success("Log Out Successful!");
+        Swal.fire({
+          title: " Success!",
+          text: "LogOut succefully!",
+          icon: "success",
+        });
       })
       .catch((error) => {
         console.error(error);

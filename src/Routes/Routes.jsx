@@ -5,6 +5,8 @@ import Home from "../Pages/Home/Home";
 import Root from "../Layout/Root";
 import ErrorPage from "../Pages/Error/ErrorPage";
 import Contact from "../Pages/ContactUs/Contact";
+import Dashbord from "../Layout/Dashbord";
+import EmployeeList from "../Pages/Dashboard/HrDeshbord/EmployeeList";
 
 const Routes = createBrowserRouter([
   {
@@ -28,6 +30,17 @@ const Routes = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <Dashbord></Dashbord>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: "dashboard/employee_list",
+        element: <EmployeeList></EmployeeList>,
       },
     ],
   },
