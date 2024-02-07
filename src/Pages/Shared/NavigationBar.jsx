@@ -1,6 +1,6 @@
 "use client";
 
-import { Avatar, Dropdown, Navbar } from "flowbite-react";
+import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
 import { NavLink } from "react-router-dom";
 
 const NavigationBar = () => {
@@ -11,9 +11,6 @@ const NavigationBar = () => {
       </NavLink>
       <NavLink to="/dashboard">
         <Navbar.Link>Dashboard</Navbar.Link>
-      </NavLink>
-      <NavLink to="/services">
-        <Navbar.Link>Services</Navbar.Link>
       </NavLink>
       <NavLink to="/contact">
         <Navbar.Link>Contact</Navbar.Link>
@@ -33,6 +30,9 @@ const NavigationBar = () => {
         </span>
       </Navbar.Brand>
       <div className="flex md:order-2">
+        <Button className="mx-2" pill outline gradientDuoTone="purpleToBlue">
+          Login
+        </Button>
         <Dropdown
           arrowIcon={false}
           inline
