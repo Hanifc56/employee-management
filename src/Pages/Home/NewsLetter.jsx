@@ -1,4 +1,5 @@
 import { CalendarDaysIcon, HandRaisedIcon } from "@heroicons/react/24/outline";
+import { Button } from "flowbite-react";
 
 const NewsLetter = () => {
   return (
@@ -27,9 +28,10 @@ const NewsLetter = () => {
                   className="min-w-0 flex-auto rounded-md border-0  px-3.5 py-2  shadow-sm ring-1 ring-inset  focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
                   placeholder="Enter your email"
                 />
-                <button type="submit" className="btn btn-outline ">
+
+                <Button color="light" pill outline>
                   Subscribe
-                </button>
+                </Button>
               </div>
             </div>
             <dl className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:pt-2">
