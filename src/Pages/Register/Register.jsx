@@ -18,10 +18,12 @@ import {
 } from "flowbite-react";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useAxiosSecure from "../../Hooks/useaxiosSecure";
 
 const Register = () => {
   const { createUser } = useAuth();
   const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const [passError, setPassError] = useState("");
   const navigate = useNavigate();
@@ -73,14 +75,31 @@ const Register = () => {
 
     createUser(email, password)
       .then((result) => {
+        // store user info in the db
+        const userInfo = {
+          name: name,
+          email: email,
+          role: role,
+          designation: designation,
+          account: account,
+          salary: salary,
+          image: res.data.data.display_url,
+        };
+        axiosSecure.post("/users", userInfo).then((userRes) => {
+          if (userRes.data.insertedId) {
+            console.log("user added to database");
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "User Created Successfully",
+              showConfirmButton: false,
+              timer: 2000,
+            });
+            navigate("/");
+          }
+        });
         console.log(result.user);
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "User Created Successfully",
-          showConfirmButton: false,
-          timer: 1500,
-        }) && navigate("/");
+
         // get user data
         updateProfile(result.user, {
           displayName: name,
