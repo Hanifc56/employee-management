@@ -8,6 +8,8 @@ import Contact from "../Pages/ContactUs/Contact";
 import Dashbord from "../Layout/Dashbord";
 import EmployeeList from "../Pages/Dashboard/HrDeshbord/EmployeeList";
 import PrivetRoutes from "./PrivetRoutes";
+import AllEmployeList from "../Pages/Dashboard/AdminDeshboard/AllEmployeList";
+import Progress from "../Pages/Dashboard/HrDeshbord/Progress";
 
 const Routes = createBrowserRouter([
   {
@@ -43,9 +45,20 @@ const Routes = createBrowserRouter([
     ),
     errorElement: <ErrorPage></ErrorPage>,
     children: [
+      // employee routes
+      // hr Routes
       {
-        path: "dashboard/employee_list",
+        path: "employee_list",
         element: <EmployeeList></EmployeeList>,
+      },
+      {
+        path: "progress",
+        element: <Progress></Progress>,
+      },
+      // Admin routes
+      {
+        path: "users",
+        element: <AllEmployeList></AllEmployeList>,
       },
     ],
   },
