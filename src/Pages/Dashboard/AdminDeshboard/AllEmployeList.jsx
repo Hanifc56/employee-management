@@ -15,6 +15,22 @@ const AllEmployeList = () => {
       return res.data;
     },
   });
+  // make hr
+  const handleMakeHr = (user) => {
+    axiosSecure.patch(`/users/hr/${user._id}`).then((res) => {
+      console.log(res.data);
+      if (res.data.modifiedCount > 0) {
+        refetch();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${user.name} is an Hr Now!`,
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      }
+    });
+  };
 
   // make a user admin
   const handleMakeAdmin = (user) => {
@@ -27,7 +43,7 @@ const AllEmployeList = () => {
           icon: "success",
           title: `${user.name} is an Admin Now!`,
           showConfirmButton: false,
-          timer: 1500,
+          timer: 2000,
         });
       }
     });
@@ -80,6 +96,7 @@ const AllEmployeList = () => {
             <Table.HeadCell>Designation</Table.HeadCell>
             <Table.HeadCell>role</Table.HeadCell>
             <Table.HeadCell>Make hr</Table.HeadCell>
+            <Table.HeadCell>Make Admin</Table.HeadCell>
             <Table.HeadCell>Fire</Table.HeadCell>
           </Table.Head>
           <Table.Body className="divide-y rounded-b-sm">
@@ -97,9 +114,22 @@ const AllEmployeList = () => {
                 <Table.Cell>{user.designation}</Table.Cell>
                 <Table.Cell>{user.role}</Table.Cell>
                 <Table.Cell>
-                  <Button onClick={() => handleMakeAdmin(user)} color="gray">
-                    <HiOutlineUserAdd className=" h-4 w-4" />
-                  </Button>
+                  {user.role === "Hr" ? (
+                    "HR"
+                  ) : (
+                    <Button onClick={() => handleMakeHr(user)} color="gray">
+                      <HiOutlineUserAdd className=" h-4 w-4" />
+                    </Button>
+                  )}
+                </Table.Cell>
+                <Table.Cell>
+                  {user.role === "admin" ? (
+                    "Admin"
+                  ) : (
+                    <Button onClick={() => handleMakeAdmin(user)} color="gray">
+                      <HiOutlineUserAdd className=" h-4 w-4" />
+                    </Button>
+                  )}
                 </Table.Cell>
                 <Table.Cell>
                   <Button onClick={() => handleDeleteUser(user)} color="red">
