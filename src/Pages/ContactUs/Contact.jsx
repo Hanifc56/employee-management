@@ -3,6 +3,7 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { Switch } from "@headlessui/react";
 
 import { toast } from "sonner";
+import { Helmet } from "react-helmet-async";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -14,6 +15,9 @@ const Contact = () => {
   const [agreed, setAgreed] = useState(false);
   return (
     <div>
+      <Helmet>
+        <title>EMS | CONTACT</title>
+      </Helmet>
       <div className=" px-6 pb-24 sm:pb-32 lg:pt-8 lg:pb-8">
         <div
           className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"

@@ -18,12 +18,11 @@ import {
 } from "flowbite-react";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import useAxiosSecure from "../../Hooks/useaxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const { createUser } = useAuth();
   const axiosPublic = useAxiosPublic();
-  const axiosSecure = useAxiosSecure();
 
   const [passError, setPassError] = useState("");
   const navigate = useNavigate();
@@ -85,7 +84,7 @@ const Register = () => {
           salary: salary,
           image: res.data.data.display_url,
         };
-        axiosSecure.post("/users", userInfo).then((userRes) => {
+        axiosPublic.post("/users", userInfo).then((userRes) => {
           if (userRes.data.insertedId) {
             console.log("user added to database");
             Swal.fire({
@@ -105,8 +104,8 @@ const Register = () => {
           displayName: name,
           photoURL: res.data.data.display_url,
         })
-          .then((currentUser) => {
-            console.log(currentUser, "Profile Updated");
+          .then(() => {
+            console.log("Profile Updated");
           })
           .catch((error) => {
             console.error(error);
@@ -119,6 +118,9 @@ const Register = () => {
   };
   return (
     <div className="bg-[url('https://i.ibb.co/cy28rBB/pexels-mohammad-danish-891059.jpg')] pb-12 pt-4 rounded-b-lg mb-10 bg-cover">
+      <Helmet>
+        <title>EMS | REGISTER</title>
+      </Helmet>
       <div className="lg:w-1/2 md:w-3/4 mx-auto p-8  rounded-lg bg-gray-100 hero-overlay bg-opacity-50 border-2">
         <h2 className="text-4xl text-center font-semibold">
           Register you account

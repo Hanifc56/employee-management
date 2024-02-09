@@ -9,6 +9,7 @@ import useAuth from "../../Hooks/useAuth";
 import { HiMail } from "react-icons/hi";
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { singIn, googleLogin } = useAuth();
@@ -57,6 +58,9 @@ const Login = () => {
   };
   return (
     <div className="bg-[url('https://i.ibb.co/TYwz4PW/pexels-burak-the-weekender-1098982.jpg')] pb-12 pt-4 rounded-b-lg mb-10 bg-cover">
+      <Helmet>
+        <title>EMS | LOGIN</title>
+      </Helmet>
       <div className="lg:w-1/2 md:w-3/4 mx-auto p-8 bg-gray-100 hero-overlay bg-opacity-50 border-2  rounded-lg">
         <h2 className="text-4xl text-center font-semibold">
           Login you account

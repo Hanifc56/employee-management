@@ -1,11 +1,15 @@
+import { Helmet } from "react-helmet-async";
 import { FaBlog, FaChartPie, FaHome, FaList, FaMobile } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Dashbord = () => {
   // TODO: get isAdmin value form database
-  const isAdmin = false;
+  const isAdmin = true;
   return (
     <div className="flex max-w-7xl mx-auto">
+      <Helmet>
+        <title>EMS | DASHBOARD</title>
+      </Helmet>
       {/* dashboard Side bar */}
 
       <div className="w-32 md:w-64 min-h-screen bg-gray-300">
