@@ -15,6 +15,24 @@ const AllEmployeList = () => {
       return res.data;
     },
   });
+
+  // make a user admin
+  const handleMakeAdmin = (user) => {
+    axiosSecure.patch(`/users/admin/${user._id}`).then((res) => {
+      console.log(res.data);
+      if (res.data.modifiedCount > 0) {
+        refetch();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${user.name} is an Admin Now!`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+  };
+
   // delete a user
   const handleDeleteUser = (user) => {
     Swal.fire({
@@ -79,7 +97,7 @@ const AllEmployeList = () => {
                 <Table.Cell>{user.designation}</Table.Cell>
                 <Table.Cell>{user.role}</Table.Cell>
                 <Table.Cell>
-                  <Button color="gray">
+                  <Button onClick={() => handleMakeAdmin(user)} color="gray">
                     <HiOutlineUserAdd className=" h-4 w-4" />
                   </Button>
                 </Table.Cell>
