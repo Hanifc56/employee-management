@@ -7,9 +7,10 @@ import ErrorPage from "../Pages/Error/ErrorPage";
 import Contact from "../Pages/ContactUs/Contact";
 import Dashbord from "../Layout/Dashbord";
 import EmployeeList from "../Pages/Dashboard/HrDeshbord/EmployeeList";
-import PrivetRoutes from "./PrivetRoutes";
+import PrivetRoutes from "./PrivetRoute";
 import AllEmployeList from "../Pages/Dashboard/AdminDeshboard/AllEmployeList";
 import Progress from "../Pages/Dashboard/HrDeshbord/Progress";
+import AdminRoute from "./AdminRoutes";
 
 const Routes = createBrowserRouter([
   {
@@ -58,7 +59,11 @@ const Routes = createBrowserRouter([
       // Admin routes
       {
         path: "users",
-        element: <AllEmployeList></AllEmployeList>,
+        element: (
+          <AdminRoute>
+            <AllEmployeList></AllEmployeList>
+          </AdminRoute>
+        ),
       },
     ],
   },

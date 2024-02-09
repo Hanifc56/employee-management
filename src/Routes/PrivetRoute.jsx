@@ -1,5 +1,6 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
+import { Spinner } from "flowbite-react";
 
 const PrivetRoutes = ({ children }) => {
   const { user, loading } = useAuth();
@@ -9,7 +10,7 @@ const PrivetRoutes = ({ children }) => {
   if (loading) {
     return (
       <div className="flex justify-center items-center pt-20">
-        <span className="loading loading-ring loading-lg"></span>
+        <Spinner aria-label="Extra large spinner example" size="xl" />
       </div>
     );
   }
