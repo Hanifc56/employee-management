@@ -10,6 +10,7 @@ import {
   HiXCircle,
 } from "react-icons/hi";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const EmployeeList = () => {
   const axiosSecure = useAxiosSecure();
@@ -94,10 +95,12 @@ const EmployeeList = () => {
                   </Button>
                 </Table.Cell>
                 <Table.Cell>
-                  <Button color="gray">
-                    <HiExclamationCircle className=" h-4 w-4" />
-                    Details
-                  </Button>
+                  <Link to={`details/:${employee._id}`}>
+                    <Button color="gray">
+                      <HiExclamationCircle className=" h-4 w-4" />
+                      Details
+                    </Button>
+                  </Link>
                 </Table.Cell>
               </Table.Row>
             ))}

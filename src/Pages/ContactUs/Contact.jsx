@@ -40,10 +40,14 @@ const Contact = () => {
             Get in Touch: Reach Out to Us through Our Contact Page
           </p>
         </div>
-        <form
-          onSubmit={handlleForm}
-          className="mx-auto mt-16 max-w-xl sm:mt-20"
-        >
+        <div className="lg:w-1/2 md:w-3/4 mx-auto text-center mt-4 p-8 bg-gray-100 hero-overlay bg-opacity-50 border-2 border-purple-400  rounded-lg">
+          <p>Visit Us!</p>
+          <h1 className="text-2xl ">
+            123 Main Street <br />
+            Anytown, USA 12345
+          </h1>
+        </div>
+        <form onSubmit={handlleForm} className="mx-auto mt-8 max-w-xl sm:mt-20">
           <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
             <div>
               <label

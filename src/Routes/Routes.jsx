@@ -11,6 +11,7 @@ import PrivetRoutes from "./PrivetRoute";
 import AllEmployeList from "../Pages/Dashboard/AdminDeshboard/AllEmployeList";
 import Progress from "../Pages/Dashboard/HrDeshbord/Progress";
 import AdminRoute from "./AdminRoutes";
+import Details from "../Pages/Dashboard/HrDeshbord/Details";
 
 const Routes = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const Routes = createBrowserRouter([
       {
         path: "employee_list",
         element: <EmployeeList></EmployeeList>,
+      },
+      {
+        path: "employee_list/details/:id",
+        element: <Details></Details>,
       },
       {
         path: "progress",
