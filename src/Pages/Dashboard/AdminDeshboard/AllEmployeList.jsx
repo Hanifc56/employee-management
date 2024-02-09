@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useaxiosSecure";
 ("use client");
 
-import { Button, Checkbox, Table } from "flowbite-react";
+import { Button, Table } from "flowbite-react";
 import { HiBan, HiOutlineUserAdd } from "react-icons/hi";
 import Swal from "sweetalert2";
 
@@ -89,9 +89,7 @@ const AllEmployeList = () => {
            rounded-sm"
         >
           <Table.Head>
-            <Table.HeadCell className="p-4 ">
-              <Checkbox />
-            </Table.HeadCell>
+            <Table.HeadCell className="p-4 ">Idx</Table.HeadCell>
             <Table.HeadCell> name</Table.HeadCell>
             <Table.HeadCell>Designation</Table.HeadCell>
             <Table.HeadCell>role</Table.HeadCell>
@@ -100,14 +98,12 @@ const AllEmployeList = () => {
             <Table.HeadCell>Fire</Table.HeadCell>
           </Table.Head>
           <Table.Body className="divide-y rounded-b-sm">
-            {users.map((user) => (
+            {users.map((user, index) => (
               <Table.Row
                 key={user._id}
                 className="bg-white dark:border-gray-700 dark:bg-gray-800"
               >
-                <Table.Cell className="p-4">
-                  <Checkbox />
-                </Table.Cell>
+                <Table.Cell className="p-4">{index + 1}</Table.Cell>
                 <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                   {user.name}
                 </Table.Cell>

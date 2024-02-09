@@ -36,7 +36,6 @@ const Login = () => {
         Swal.fire("Login successful!") &&
           navigate(location?.state ? location.state : "/");
       })
-
       .catch((error) => {
         console.error(error);
         setMailError(error.message);
@@ -74,6 +73,7 @@ const Login = () => {
             <TextInput
               id="email2"
               type="email"
+              name="email"
               rightIcon={HiMail}
               placeholder="Enter your email"
               required
@@ -87,7 +87,13 @@ const Login = () => {
             <div className="mb-2 block">
               <Label htmlFor="password2" value="Your password" />
             </div>
-            <TextInput id="password2" type="password" required shadow />
+            <TextInput
+              id="password2"
+              name="password"
+              type="password"
+              required
+              shadow
+            />
             {mailError && (
               <span className="label-text text-red-400">{mailError}</span>
             )}

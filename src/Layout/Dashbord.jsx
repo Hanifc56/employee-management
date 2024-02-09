@@ -1,10 +1,11 @@
 import { Helmet } from "react-helmet-async";
 import { FaBlog, FaChartPie, FaHome, FaList, FaMobile } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../Hooks/useAdmin";
 
 const Dashbord = () => {
   // TODO: get isAdmin value form database
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
   return (
     <div className="flex max-w-7xl mx-auto">
       <Helmet>
