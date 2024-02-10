@@ -14,6 +14,7 @@ import AdminRoute from "./AdminRoutes";
 import Details from "../Pages/Dashboard/HrDeshbord/Details";
 import WorkSheet from "../Pages/Dashboard/EmployeeDBord/WorkSheet";
 import PymentHistory from "../Pages/Dashboard/EmployeeDBord/PymentHistory";
+import HrRoute from "./HrRoutes";
 
 const Routes = createBrowserRouter([
   {
@@ -61,15 +62,27 @@ const Routes = createBrowserRouter([
       // hr Routes
       {
         path: "employee_list",
-        element: <EmployeeList></EmployeeList>,
+        element: (
+          <HrRoute>
+            <EmployeeList></EmployeeList>
+          </HrRoute>
+        ),
       },
       {
         path: "employee_list/details/:id",
-        element: <Details></Details>,
+        element: (
+          <HrRoute>
+            <Details></Details>
+          </HrRoute>
+        ),
       },
       {
         path: "progress",
-        element: <Progress></Progress>,
+        element: (
+          <HrRoute>
+            <Progress></Progress>
+          </HrRoute>
+        ),
       },
       // Admin routes
       {

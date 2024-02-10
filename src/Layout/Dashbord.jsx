@@ -7,7 +7,8 @@ import useHr from "../Hooks/useHr";
 const Dashbord = () => {
   // TODO: get isAdmin value form database
   const [isAdmin] = useAdmin();
-  const [isHr] = useHr();
+  // const [isHr] = useHr();
+  const isHr = false;
   return (
     <div className="flex max-w-7xl mx-auto">
       <Helmet>
