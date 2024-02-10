@@ -2,10 +2,12 @@ import { Helmet } from "react-helmet-async";
 import { FaBlog, FaChartPie, FaHome, FaList, FaMobile } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../Hooks/useAdmin";
+import useHr from "../Hooks/useHr";
 
 const Dashbord = () => {
   // TODO: get isAdmin value form database
   const [isAdmin] = useAdmin();
+  const [isHr] = useHr();
   return (
     <div className="flex max-w-7xl mx-auto">
       <Helmet>
@@ -26,7 +28,7 @@ const Dashbord = () => {
                 </NavLink>
               </li>
             </>
-          ) : (
+          ) : isHr ? (
             <>
               <li className="bg-white rounded-lg md:p-4 md:m-4 my-2 p-2">
                 <NavLink to="employee_list">
@@ -37,6 +39,21 @@ const Dashbord = () => {
                 <NavLink to="progress">
                   <FaChartPie className="inline-block ml-2 "></FaChartPie>{" "}
                   Progress
+                </NavLink>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className="bg-white rounded-lg md:p-4 md:m-4 my-2 p-2">
+                <NavLink to="paymentHistory">
+                  <FaList className="inline-block ml-2"></FaList> Payment
+                  History
+                </NavLink>
+              </li>
+              <li className="bg-white rounded-lg md:p-4 md:m-4 my-2 p-2">
+                <NavLink to="workSheet">
+                  <FaChartPie className="inline-block ml-2 "></FaChartPie>{" "}
+                  Work-Sheet
                 </NavLink>
               </li>
             </>

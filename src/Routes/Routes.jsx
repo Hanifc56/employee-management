@@ -12,6 +12,8 @@ import AllEmployeList from "../Pages/Dashboard/AdminDeshboard/AllEmployeList";
 import Progress from "../Pages/Dashboard/HrDeshbord/Progress";
 import AdminRoute from "./AdminRoutes";
 import Details from "../Pages/Dashboard/HrDeshbord/Details";
+import WorkSheet from "../Pages/Dashboard/EmployeeDBord/WorkSheet";
+import PymentHistory from "../Pages/Dashboard/EmployeeDBord/PymentHistory";
 
 const Routes = createBrowserRouter([
   {
@@ -48,6 +50,14 @@ const Routes = createBrowserRouter([
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       // employee routes
+      {
+        path: "paymentHistory",
+        element: <PymentHistory></PymentHistory>,
+      },
+      {
+        path: "workSheet",
+        element: <WorkSheet></WorkSheet>,
+      },
       // hr Routes
       {
         path: "employee_list",

@@ -2,11 +2,18 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useaxiosSecure";
 ("use client");
 
-import { Button, Table } from "flowbite-react";
+import { Button, Table, Card } from "flowbite-react";
 import { HiBan, HiOutlineUserAdd } from "react-icons/hi";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
 const AllEmployeList = () => {
+  const [isGridView, setIsGridView] = useState(false);
+
+  const toggleView = () => {
+    setIsGridView(!isGridView);
+  };
+
   const axiosSecure = useAxiosSecure();
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
@@ -82,60 +89,117 @@ const AllEmployeList = () => {
         </h1>
       </div>
 
-      <div className="overflow-x-auto md:px-8 py-8 ">
-        <Table
-          hoverable
-          className="  outline outline-offset-4 outline-indigo-600 outline-1
-           rounded-sm"
-        >
-          <Table.Head>
-            <Table.HeadCell className="p-4 ">Idx</Table.HeadCell>
-            <Table.HeadCell> name</Table.HeadCell>
-            <Table.HeadCell>Designation</Table.HeadCell>
-            <Table.HeadCell>role</Table.HeadCell>
-            <Table.HeadCell>Make hr</Table.HeadCell>
-            <Table.HeadCell>Make Admin</Table.HeadCell>
-            <Table.HeadCell>Fire</Table.HeadCell>
-          </Table.Head>
-          <Table.Body className="divide-y rounded-b-sm">
-            {users.map((user, index) => (
-              <Table.Row
-                key={user._id}
-                className="bg-white dark:border-gray-700 dark:bg-gray-800"
-              >
-                <Table.Cell className="p-4">{index + 1}</Table.Cell>
-                <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                  {user.name}
-                </Table.Cell>
-                <Table.Cell>{user.designation}</Table.Cell>
-                <Table.Cell>{user.role}</Table.Cell>
-                <Table.Cell>
-                  {user.role === "Hr" ? (
-                    "HR"
-                  ) : (
-                    <Button onClick={() => handleMakeHr(user)} color="gray">
-                      <HiOutlineUserAdd className=" h-4 w-4" />
+      <div>
+        <Button color="gray" className="mx-auto" onClick={toggleView}>
+          {isGridView ? "Switch to Table View" : "Switch to Card Grid View"}
+        </Button>
+        {isGridView ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 p-4">
+            {users.map((user) => (
+              <Card key={user._id} className="max-w-sm">
+                <div className="flex flex-col items-center pb-10">
+                  <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+                    {user.name}
+                  </h5>
+                  <span className="text-lg text-gray-500 dark:text-gray-400">
+                    {user.designation}
+                  </span>
+                  <span className="text-sm text-gray-500 dark:text-gray-400">
+                    {user.role}
+                  </span>
+                  <div className="mt-4 flex md:space-x-3 lg:mt-6">
+                    {user.role === "Hr" ? (
+                      "HR"
+                    ) : (
+                      <Button onClick={() => handleMakeHr(user)} color="gray">
+                        <HiOutlineUserAdd className=" h-4 w-4" />
+                        HR
+                      </Button>
+                    )}
+                    {user.role === "admin" ? (
+                      "Admin"
+                    ) : (
+                      <Button
+                        className="mx-2"
+                        onClick={() => handleMakeAdmin(user)}
+                        color="gray"
+                      >
+                        <HiOutlineUserAdd className=" h-4 w-4" />
+                        Admin
+                      </Button>
+                    )}
+                    <Button onClick={() => handleDeleteUser(user)} color="red">
+                      <HiBan className=" h-4 w-4" />
+                      fire
                     </Button>
-                  )}
-                </Table.Cell>
-                <Table.Cell>
-                  {user.role === "admin" ? (
-                    "Admin"
-                  ) : (
-                    <Button onClick={() => handleMakeAdmin(user)} color="gray">
-                      <HiOutlineUserAdd className=" h-4 w-4" />
-                    </Button>
-                  )}
-                </Table.Cell>
-                <Table.Cell>
-                  <Button onClick={() => handleDeleteUser(user)} color="red">
-                    <HiBan className=" h-4 w-4" />
-                  </Button>
-                </Table.Cell>
-              </Table.Row>
+                  </div>
+                </div>
+              </Card>
             ))}
-          </Table.Body>
-        </Table>
+          </div>
+        ) : (
+          <div className="overflow-x-auto md:px-8 py-8 ">
+            <Table
+              hoverable
+              className="  outline outline-offset-4 outline-indigo-600 outline-1
+           rounded-sm"
+            >
+              <Table.Head>
+                <Table.HeadCell className="p-4 ">Idx</Table.HeadCell>
+                <Table.HeadCell> name</Table.HeadCell>
+                <Table.HeadCell>Designation</Table.HeadCell>
+                <Table.HeadCell>role</Table.HeadCell>
+                <Table.HeadCell>Make hr</Table.HeadCell>
+                <Table.HeadCell>Make Admin</Table.HeadCell>
+                <Table.HeadCell>Fire</Table.HeadCell>
+              </Table.Head>
+              <Table.Body className="divide-y rounded-b-sm">
+                {users.map((user, index) => (
+                  <Table.Row
+                    key={user._id}
+                    className="bg-white dark:border-gray-700 dark:bg-gray-800"
+                  >
+                    <Table.Cell className="p-4">{index + 1}</Table.Cell>
+                    <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                      {user.name}
+                    </Table.Cell>
+                    <Table.Cell>{user.designation}</Table.Cell>
+                    <Table.Cell>{user.role}</Table.Cell>
+                    <Table.Cell>
+                      {user.role === "Hr" ? (
+                        "HR"
+                      ) : (
+                        <Button onClick={() => handleMakeHr(user)} color="gray">
+                          <HiOutlineUserAdd className=" h-4 w-4" />
+                        </Button>
+                      )}
+                    </Table.Cell>
+                    <Table.Cell>
+                      {user.role === "admin" ? (
+                        "Admin"
+                      ) : (
+                        <Button
+                          onClick={() => handleMakeAdmin(user)}
+                          color="gray"
+                        >
+                          <HiOutlineUserAdd className=" h-4 w-4" />
+                        </Button>
+                      )}
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Button
+                        onClick={() => handleDeleteUser(user)}
+                        color="red"
+                      >
+                        <HiBan className=" h-4 w-4" />
+                      </Button>
+                    </Table.Cell>
+                  </Table.Row>
+                ))}
+              </Table.Body>
+            </Table>
+          </div>
+        )}
       </div>
     </div>
   );
