@@ -10,7 +10,7 @@ const PrivetRoutes = ({ children }) => {
   if (loading) {
     return (
       <div className="flex justify-center items-center pt-20">
-        <Spinner aria-label="Extra large spinner example" size="xl" />
+        <Spinner color="failure" aria-label="Extra large spinner example" size="xl" />
       </div>
     );
   }

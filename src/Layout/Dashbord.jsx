@@ -3,6 +3,7 @@ import { FaBlog, FaChartPie, FaHome, FaList, FaMobile } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../Hooks/useAdmin";
 import useHr from "../Hooks/useHr";
+import "../Layout/dashbord.css";
 
 const Dashbord = () => {
   // TODO: get isAdmin value form database
