@@ -33,7 +33,7 @@ const NavigationBar = () => {
   };
   return (
     <Navbar fluid rounded className=" bg-gray-100 hero-overlay bg-opacity-50  ">
-      <Navbar.Brand href="https://flowbite-react.com">
+      <Navbar.Brand href="#">
         <img
           src="https://i.ibb.co/yhWQmrL/Employe.jpg"
           className="mr-3 h-6 sm:h-9"
